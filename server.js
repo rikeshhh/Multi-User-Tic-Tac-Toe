@@ -43,30 +43,33 @@ io.on("connection", (socket) => {
       }
     }
   });
-  socket.on("playing",(e)=>{
-    if(e.value=="X"){
-        let objToChange=playingArray.find(obj=>obj.p1.p1name===e.name)
 
-        objToChange.p1.p1move=e.id
-        objToChange.sum++
+  socket.on("playing", (e) => {
+    if (e.value == "X") {
+      let objToChange = playingArray.find((obj) => obj.p1.p1name === e.name);
+
+      objToChange.p1.p1move = e.id;
+      objToChange.sum++;
+    } else if (e.value == "O") {
+      let objToChange = playingArray.find((obj) => obj.p2.p2name === e.name);
+
+      objToChange.p2.p2move = e.id;
+      objToChange.sum++;
     }
-    else if(e.value=="O"){
-        let objToChange=playingArray.find(obj=>obj.p2.p2name===e.name)
 
-        objToChange.p2.p2move=e.id
-        objToChange.sum++
-    }
+    io.emit("playing", { allPlayers: playingArray });
+  });
 
-    io.emit("playing",{allPlayers:playingArray})
-
-})
-socket.on("gameOver",(e)=>{
-  playingArray=playingArray.filter(obj=>obj.p1.p1name!==e.name)
-})
+  socket.on("gameOver", (e) => {
+    playingArray = playingArray.filter((obj) => obj.p1.p1name !== e.name);
+    console.log(playingArray);
+  });
 });
+
 app.get("/", (req, res) => {
   return res.sendFile("index.html");
 });
+
 server.listen(3000, () => {
-  console.log("port connected");
+  console.log("port connected to 3000");
 });

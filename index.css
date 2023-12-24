@@ -8,15 +8,39 @@ body {
   display: grid;
   place-items: center;
   font-family: 'Tilt Warp', cursive;
+  /* background-image: url(tac.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat; */
 }
 
-h1 {
-  margin: 50px 0 50px 0;
-  font-size: 5rem;
-  color: rgb(32, 183, 93);
-  -webkit-text-stroke: .5px black;
-}
 
+h1::before {
+  content: open-quote;
+}
+h1::after {
+  content: close-quote;
+}
+.tictac{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tic,
+.tac{
+ animation: rotator 2s ease-in-out infinite alternate-reverse;
+ font-size: 22px;
+
+}
+@keyframes rotator {
+to{
+  transform: rotate(0deg);
+  color: red;
+}
+from{
+  transform: rotate(360deg);
+  color: mediumseagreen;
+}
+}
 input {
   margin-bottom: 20px;
   padding: 5px;
@@ -69,4 +93,36 @@ button.enabled {
 
 p {
   font-size: 2rem;
+}
+#users{
+  display: flex; 
+  width: 95vw;
+   position: relative;
+}
+#oppNameCont{
+  position: absolute; 
+  right: 0;
+}
+@media only screen and (max-width:650px) {
+ body{
+  font-size: 2rem;
+  display: grid;
+  place-items: center;
+
+ }
+  h1{
+    text-align: center;
+    font-size: 2rem;
+  }
+#users{
+width: 45vw;
+display: flex;
+flex-direction: column;
+position: relative;
+justify-content: start;
+gap: 12px;
+}
+#oppNameCont{
+  position: relative;
+}
 }

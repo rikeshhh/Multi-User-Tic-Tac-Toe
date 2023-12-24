@@ -9,16 +9,22 @@
       href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css" />
   </head>
 
   <body>
-    <h1>Tic-Tac-Toe</h1>
-
-    <div style="display: flex; width: 95vw; position: relative">
+    <div class="tictac">
+        <span class="tic">X</span>
+        <h1>Tic Tac Toe </h1>
+        <span class="tac">O</span>
+      </div>
+    <div  id="users">
       <p id="userCont">You : <span id="user"></span></p>
-      <p style="position: absolute; right: 0" id="oppNameCont">
-        Opponent : <span id="oppName"></span>
+      <p  id="oppNameCont">
+        Opp : <span id="oppName"></span>
       </p>
     </div>
     <br />
